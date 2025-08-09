@@ -9,8 +9,8 @@
     "node": ">=20.0.0"
   },
   "scripts": {
-    "build": "node ./node_modules/@nestjs/cli/bin/nest.js build",
-    "build:railway": "npm install && node ./node_modules/@nestjs/cli/bin/nest.js build",
+    "build": "npx @nestjs/cli build",
+    "build:railway": "npm install && npx @nestjs/cli build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
