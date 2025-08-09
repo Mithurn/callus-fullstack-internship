@@ -33,6 +33,8 @@ async function bootstrap() {
   console.log(`Application is running on: http://0.0.0.0:${port}`);
   console.log(`Swagger documentation available at: http://0.0.0.0:${port}/api`);
   console.log(`Health check available at: http://0.0.0.0:${port}/health`);
+  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`Port: ${port}`);
   
   // Handle graceful shutdown
   process.on('SIGTERM', async () => {
