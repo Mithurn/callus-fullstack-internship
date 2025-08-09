@@ -19,7 +19,8 @@ import { ConsultationsModule } from './consultations/consultations.module';
       type: 'sqlite',
       database: process.env.NODE_ENV === 'production' ? '/tmp/db.sqlite' : 'db.sqlite',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: true,
+      synchronize: process.env.NODE_ENV !== 'production',
+      logging: process.env.NODE_ENV !== 'production',
     }),
     JwtModule.register({
       secret: process.env.JWT_SECRET || 'your-secret-key',

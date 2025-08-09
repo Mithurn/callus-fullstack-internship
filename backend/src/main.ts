@@ -36,6 +36,7 @@ async function bootstrap() {
     console.log(`Health check available at: http://0.0.0.0:${port}/health`);
     console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
     console.log(`Port: ${port}`);
+    console.log(`Process ID: ${process.pid}`);
     
     // Handle graceful shutdown
     process.on('SIGTERM', async () => {
