@@ -11,6 +11,7 @@
     "start:frontend": "cd frontend && npm run start",
     "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
     "build": "cd backend && npm run build && cd ../frontend && npm run build",
+    "build:railway": "cd backend && npm install && npm run build",
     "seed": "cd backend && npm run seed"
   },
   "devDependencies": {
