@@ -50,16 +50,19 @@ export default function LoginPage() {
         const registerData = data as RegisterForm;
         const response = await authAPI.register(registerData.email, registerData.password, registerData.name, registerData.role);
         const { user, access_token } = response.data;
+        console.log('Registration successful:', { user, token: access_token.substring(0, 10) + '...' });
         login(user, access_token);
         router.push('/');
       } else {
         const loginData = data as LoginForm;
         const response = await authAPI.login(loginData.email, loginData.password);
         const { user, access_token } = response.data;
+        console.log('Login successful:', { user, token: access_token.substring(0, 10) + '...' });
         login(user, access_token);
         router.push('/');
       }
     } catch (err: unknown) {
+      console.error('Login/Register error:', err);
       const errorMessage = err instanceof Error ? err.message : (isRegistering ? '회원가입에 실패했습니다' : '로그인에 실패했습니다');
       setError(errorMessage);
     } finally {

@@ -11,13 +11,27 @@ export const api = axios.create({
 
 // Request interceptor to add auth token
 api.interceptors.request.use((config) => {
-  const token = localStorage.getItem('auth-storage') 
-    ? JSON.parse(localStorage.getItem('auth-storage')!).state.token 
-    : null;
-  
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
+  try {
+    const authStorage = localStorage.getItem('auth-storage');
+    if (authStorage) {
+      const authData = JSON.parse(authStorage);
+      const token = authData.state?.token || null;
+      
+      if (token && token !== 'null' && token !== 'undefined') {
+        config.headers.Authorization = `Bearer ${token}`;
+        console.log('Adding auth token to request:', token.substring(0, 10) + '...');
+      } else {
+        console.log('No valid token found in storage');
+      }
+    } else {
+      console.log('No auth storage found');
+    }
+  } catch (error) {
+    console.error('Error reading auth token:', error);
+    // Clear corrupted auth storage
+    localStorage.removeItem('auth-storage');
   }
+  
   return config;
 });
 
@@ -25,9 +39,14 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use(
   (response) => response,
   (error) => {
+    console.log('API Error:', error.response?.status, error.response?.data);
     if (error.response?.status === 401) {
+      console.log('Unauthorized request, clearing auth storage and redirecting to login');
       localStorage.removeItem('auth-storage');
-      window.location.href = '/login';
+      // Only redirect if we're not already on the login page
+      if (typeof window !== 'undefined' && !window.location.pathname.includes('/login')) {
+        window.location.href = '/login';
+      }
     }
     return Promise.reject(error);
   }

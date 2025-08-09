@@ -73,18 +73,25 @@ const services = [
 ];
 
 export default function HomePage() {
-  const { isAuthenticated, user } = useAuthStore();
+  const { isAuthenticated, user, checkAuth } = useAuthStore();
   const router = useRouter();
 
   useEffect(() => {
+    console.log('HomePage: Checking authentication:', { isAuthenticated, user });
     if (!isAuthenticated) {
+      console.log('HomePage: Not authenticated, redirecting to login');
       router.push('/login');
+    } else {
+      console.log('HomePage: Authenticated, user:', user);
     }
-  }, [isAuthenticated, router]);
+  }, [isAuthenticated, router, user]);
 
   if (!isAuthenticated) {
+    console.log('HomePage: Rendering null - not authenticated');
     return null;
   }
+
+  console.log('HomePage: Rendering authenticated content for user:', user);
 
   const handleServiceClick = (serviceId: string) => {
     // Navigate to the service request form
