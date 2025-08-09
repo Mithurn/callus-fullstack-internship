@@ -194,8 +194,8 @@ prune-assessment/
 ## 📞 Support
 
 For questions or issues, please contact:
-- Email: [your-email@example.com]
-- GitHub: [your-github-username]
+- Email: mithurnjeromme172@gmail.com
+- GitHub: https://github.com/Mithurn
 
 ## 📄 License
 
