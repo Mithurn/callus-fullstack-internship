@@ -36,11 +36,11 @@ export default function LoginPage() {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<LoginForm | RegisterForm>({
+  } = useForm({
     resolver: zodResolver(isRegistering ? registerSchema : loginSchema),
   });
 
-  const onSubmit = async (data: LoginForm | RegisterForm) => {
+  const onSubmit = async (data: unknown) => {
     setIsLoading(true);
     setError('');
 
@@ -110,9 +110,11 @@ export default function LoginPage() {
                 <input
                   type="text"
                   placeholder="이름을 입력하세요"
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
                   {...register('name' as any)}
                   className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 />
+                {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                 {(errors as any).name && (
                   <p className="text-sm text-red-600">{(errors as any).name.message}</p>
                 )}
@@ -124,7 +126,7 @@ export default function LoginPage() {
               <input
                 type="email"
                 placeholder="이메일을 입력하세요"
-                {...register('email' as any)}
+                {...register('email')}
                 className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
               {errors.email && (
@@ -138,7 +140,7 @@ export default function LoginPage() {
                 <input
                   type={showPassword ? 'text' : 'password'}
                   placeholder="비밀번호를 입력하세요"
-                  {...register('password' as any)}
+                  {...register('password')}
                   className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent pr-12"
                 />
                 <button
@@ -161,6 +163,7 @@ export default function LoginPage() {
               <div className="space-y-3">
                 <label className="block text-gray-900 font-medium">역할</label>
                 <select
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
                   {...register('role' as any)}
                   className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 >
