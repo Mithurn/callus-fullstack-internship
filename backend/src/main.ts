@@ -32,6 +32,7 @@ async function bootstrap() {
   await app.listen(port, '0.0.0.0');
   console.log(`Application is running on: http://0.0.0.0:${port}`);
   console.log(`Swagger documentation available at: http://0.0.0.0:${port}/api`);
+  console.log(`Health check available at: http://0.0.0.0:${port}/health`);
   
   // Handle graceful shutdown
   process.on('SIGTERM', async () => {
