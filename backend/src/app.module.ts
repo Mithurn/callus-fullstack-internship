@@ -17,7 +17,7 @@ import { ConsultationsModule } from './consultations/consultations.module';
     }),
     TypeOrmModule.forRoot({
       type: 'sqlite',
-      database: 'db.sqlite',
+      database: process.env.NODE_ENV === 'production' ? '/tmp/db.sqlite' : 'db.sqlite',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
