@@ -332,51 +332,84 @@ prune-assessment/
    - Efficient authentication
    - Proper error handling
 
-## 🎯 Challenges Faced
+## 🎯 Challenges Faced and Solutions
 
-1. **Authentication Flow**:
-   - Implementing secure JWT authentication
-   - Handling token refresh and expiration
-   - Managing protected routes
+### **1. Deployment Challenges**
+**Challenge**: Railway deployment was failing due to incorrect build configuration and port mismatches.
+**Solution**: 
+- Created Railway-specific configuration files
+- Fixed port configuration to match Railway's requirements
+- Implemented proper build and start commands
+- Added health check endpoints for monitoring
 
-2. **State Management**:
-   - Choosing between Redux and Zustand
-   - Implementing persistence for authentication
-   - Managing complex state updates
+### **2. Authentication Implementation**
+**Challenge**: Implementing secure JWT authentication with proper token handling and protected routes.
+**Solution**:
+- Used NestJS JWT strategy with Passport.js
+- Implemented secure token storage in localStorage
+- Added request/response interceptors for automatic token handling
+- Created protected route guards for frontend
 
-3. **UI/UX Design**:
-   - Matching Figma design exactly
-   - Implementing responsive design
-   - Creating consistent component library
+### **3. Database Seeding**
+**Challenge**: Production database was empty, causing login failures.
+**Solution**:
+- Created a seed endpoint for production data
+- Implemented proper service exports for dependency injection
+- Added error handling for duplicate user creation
+- Created test users with proper credentials
 
-4. **Form Handling**:
-   - Implementing complex form validation
-   - Handling form submission and errors
-   - Creating reusable form components
+### **4. Frontend-Backend Integration**
+**Challenge**: Ensuring seamless communication between frontend and backend with proper error handling.
+**Solution**:
+- Used TanStack Query for efficient data fetching and caching
+- Implemented proper error boundaries and loading states
+- Added CORS configuration for cross-origin requests
+- Created comprehensive API utilities with interceptors
 
-## 🔮 Future Improvements
+### **5. State Management**
+**Challenge**: Managing complex application state across multiple pages and components.
+**Solution**:
+- Implemented Zustand for lightweight state management
+- Added persistence for authentication state
+- Created reusable hooks for common state operations
+- Separated concerns between local and global state
 
-1. **Features**:
-   - Real-time notifications
-   - File upload functionality
-   - Advanced search and filtering
-   - Payment integration
-   - Chat functionality
+## 🔮 Potential Improvements
 
-2. **Performance**:
-   - Server-side rendering optimization
-   - Database query optimization
-   - Caching strategies
+### **1. Technical Enhancements**
+- **Real-time Features**: Implement WebSocket connections for live chat and notifications
+- **File Upload**: Add image and document upload functionality for quotations and consultations
+- **Advanced Search**: Implement full-text search with filters and sorting
+- **Caching**: Add Redis for session management and data caching
+- **Testing**: Implement comprehensive unit, integration, and E2E tests
 
-3. **Security**:
-   - Two-factor authentication
-   - Rate limiting
-   - Input sanitization
+### **2. User Experience**
+- **Mobile App**: Develop React Native mobile application
+- **Offline Support**: Implement service workers for offline functionality
+- **Progressive Web App**: Add PWA features for better mobile experience
+- **Accessibility**: Improve accessibility compliance (WCAG 2.1)
+- **Internationalization**: Add multi-language support
 
-4. **Testing**:
-   - Unit tests
-   - Integration tests
-   - E2E tests
+### **3. Security Enhancements**
+- **Two-Factor Authentication**: Implement 2FA for enhanced security
+- **Rate Limiting**: Add rate limiting for API endpoints
+- **Input Validation**: Enhance input sanitization and validation
+- **Audit Logging**: Implement comprehensive audit trails
+- **Data Encryption**: Add end-to-end encryption for sensitive data
+
+### **4. Performance Optimization**
+- **Server-Side Rendering**: Implement SSR for better SEO and performance
+- **Database Optimization**: Add database indexing and query optimization
+- **CDN Integration**: Implement CDN for static assets
+- **Image Optimization**: Add automatic image compression and optimization
+- **Bundle Optimization**: Implement code splitting and lazy loading
+
+### **5. Business Features**
+- **Payment Integration**: Add payment processing for quotations
+- **Analytics Dashboard**: Implement user analytics and reporting
+- **Admin Panel**: Create comprehensive admin interface
+- **Email Notifications**: Add email notifications for important events
+- **SMS Integration**: Implement SMS notifications for urgent updates
 
 ## 📞 Support
 
