@@ -8,5 +8,6 @@ import { Quotation } from './quotation.entity';
   imports: [TypeOrmModule.forFeature([Quotation])],
   providers: [QuotationsService],
   controllers: [QuotationsController],
+  exports: [QuotationsService],
 })
 export class QuotationsModule {} 
