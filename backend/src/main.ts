@@ -31,27 +31,27 @@ async function bootstrap() {
 
     const port = process.env.PORT || 3001;
     await app.listen(port, '0.0.0.0');
-    console.log(`Application is running on: http://0.0.0.0:${port}`);
-    console.log(`Swagger documentation available at: http://0.0.0.0:${port}/api`);
-    console.log(`Health check available at: http://0.0.0.0:${port}/health`);
-    console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
-    console.log(`Port: ${port}`);
-    console.log(`Process ID: ${process.pid}`);
+    console.log(`🚀 Application is running on: http://0.0.0.0:${port}`);
+    console.log(`📚 Swagger documentation available at: http://0.0.0.0:${port}/api`);
+    console.log(`🏥 Health check available at: http://0.0.0.0:${port}/health`);
+    console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
+    console.log(`🔢 Port: ${port}`);
+    console.log(`🆔 Process ID: ${process.pid}`);
     
     // Handle graceful shutdown
     process.on('SIGTERM', async () => {
-      console.log('SIGTERM received, shutting down gracefully');
+      console.log('🛑 SIGTERM received, shutting down gracefully');
       await app.close();
       process.exit(0);
     });
 
     process.on('SIGINT', async () => {
-      console.log('SIGINT received, shutting down gracefully');
+      console.log('🛑 SIGINT received, shutting down gracefully');
       await app.close();
       process.exit(0);
     });
   } catch (error) {
-    console.error('Failed to start application:', error);
+    console.error('❌ Failed to start application:', error);
     process.exit(1);
   }
 }
