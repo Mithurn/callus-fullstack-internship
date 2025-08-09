@@ -1,4 +1,5 @@
 'use client';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -110,11 +111,9 @@ export default function LoginPage() {
                 <input
                   type="text"
                   placeholder="이름을 입력하세요"
-                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
                   {...register('name' as any)}
                   className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 />
-                {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                 {(errors as any).name && (
                   <p className="text-sm text-red-600">{(errors as any).name.message}</p>
                 )}
@@ -163,7 +162,6 @@ export default function LoginPage() {
               <div className="space-y-3">
                 <label className="block text-gray-900 font-medium">역할</label>
                 <select
-                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
                   {...register('role' as any)}
                   className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 >
